@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jogo Conserta Felix Jr.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="game-container">
+    <div id="welcome-screen">
+      <h1>Fuga do Ralph!</h1>
+      <p>O Ralph está furioso! Ajude o Felix a escapar da chuva de tijolos.</p>
+      <div class="instructions">
+        <h2>Como Jogar:</h2>
+        <ul>
+          <li><strong>Use as setas (← →) ou as teclas (A D)</strong> para mover o Felix.</li>
+          <li>Sua <strong>pontuação</strong> é o número de tijolos que você desvia.</li>
+          <li><strong>Fique de olho na torta!</strong> Passe por cima dela para destruir todos os tijolos e ganhar um bônus.</li>
+        </ul>
+      </div>
+      <div id="high-score-display">Recorde: 0</div>
+      <p id="loading-text">Carregando recursos...</p>
+      <button id="start-button">Iniciar Jogo</button>
+    </div>
+
+    <canvas id="game-canvas" class="hidden" width="800" height="400"></canvas>
+
+    <div id="flash-overlay"></div>
+
+    <div id="game-panel" class="hidden">
+      <div id="score-display">PONTOS: 0</div>
+      <div id="lives-display">VIDAS: 3</div>
+      <button id="mute-button">Música: ON</button>
+    </div>
+
+    <div id="game-over" class="hidden">
+      <h2>Fim de Jogo!</h2>
+      <p id="final-score"></p>
+      <p id="high-score-game-over"></p>
+      <button id="restart-button">Reiniciar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

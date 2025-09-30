@@ -1,0 +1,273 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #222;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#game-container {
+  position: relative;
+  max-width: 800px;
+  width: 95%;
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+}
+
+#game-canvas {
+  width: 100%;
+  height: auto;
+  background-image: url('assets/building.png');
+  background-size: cover;
+  background-position: center;
+  background-color: #1a2a45;
+  border: 3px solid #fff;
+}
+
+#flash-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0;
+  pointer-events: none; /* Garante que não bloqueie cliques */
+  z-index: 5; /* Fica sobre o canvas, mas abaixo dos menus */
+}
+
+#flash-overlay.flash {
+  animation: flash-effect 0.3s ease-out;
+}
+
+@keyframes flash-effect {
+  0% { opacity: 0.7; }
+  100% { opacity: 0; }
+}
+
+#game-panel {
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111;
+  border: 2px solid #1a73e8;
+  border-radius: 8px;
+}
+
+#game-panel button {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  background-color: #555;
+  box-shadow: 0 4px 0 #333;
+  border-radius: 8px;
+  border: 2px solid #fff;
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#welcome-screen button, #game-over button {
+  animation: pulse-button 2s infinite;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 2px solid #fff;
+  background-color: #1a73e8;
+  color: white;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 0 #113a8a;
+  margin-top: 1rem; /* Adiciona espaço acima do botão */
+  font-family: 'Press Start 2P', cursive;
+  position: relative; z-index: 2; /* Garante que o botão fique sobre o overlay */
+}
+
+#welcome-screen button:hover, #game-over button:hover {
+  background-color: #155ab6;
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #113a8a;
+}
+
+#game-over button {
+  background-color: #c0392b; /* Cor vermelha para o botão de reiniciar */
+  box-shadow: 0 4px 0 #88281d;
+}
+
+
+#welcome-screen {
+  position: relative; /* Necessário para o overlay */
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  border: 2px solid #1a73e8;
+  box-shadow: 0 0 40px rgba(26, 115, 232, 0.7);
+  background-image: url('assets/background-far.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden; /* Garante que o overlay não vaze */
+}
+
+#welcome-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay escuro para legibilidade */
+  z-index: 1;
+}
+
+#welcome-screen h1 {
+  position: relative; z-index: 2; /* Garante que o conteúdo fique sobre o overlay */
+  margin-top: 0;
+  font-size: 3rem;
+  color: #f1c40f;
+  text-shadow: 3px 3px 0px #c0392b;
+  animation: float-title 3s ease-in-out infinite;
+}
+
+#welcome-screen p {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.2rem; /* Aumenta o tamanho da fonte para melhor legibilidade */
+  line-height: 1.5;
+  color: #ddd;
+  margin-bottom: 1.0rem; /* Reduz o espaço abaixo para aproximar dos outros elementos */
+  position: relative; z-index: 2;
+}
+
+#welcome-screen .instructions {
+  margin: 1.5rem 0;
+  position: relative; z-index: 2;
+  color: #ccc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#welcome-screen .instructions h2 {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: #1a73e8;
+  text-shadow: none;
+}
+
+#welcome-screen .instructions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid #f1c40f;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+}
+
+#welcome-screen .instructions li {
+  font-size: 1rem; /* Aumenta o tamanho da fonte das instruções */
+  position: relative;
+  padding-left: 25px; /* Espaço para o ícone */
+  margin-bottom: 0.8rem;
+  line-height: 1.6; /* Aumenta o espaçamento entre as linhas */
+}
+
+#welcome-screen .instructions li::before {
+  content: '»'; /* Ícone de seta para cada item */
+  position: absolute;
+  left: 0;
+  color: #f1c40f;
+}
+
+#game-over, #welcome-screen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 600px; /* Define uma largura para consistência */
+  width: 90%;
+  padding: 2rem 3rem;
+  border-radius: 10px;
+}
+
+#game-over {
+  background-color: #111;
+  border: 2px solid #c0392b; /* Borda vermelha */
+  box-shadow: 0 0 40px rgba(192, 57, 43, 0.7); /* Sombra vermelha */
+  background: radial-gradient(circle, #4d1919 0%, #111 80%);
+}
+
+#game-over h2 {
+  font-size: 3.5rem;
+  color: #e74c3c;
+  text-shadow: 3px 3px 0 #000;
+  margin-bottom: 2rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#high-score-display {
+  position: relative; z-index: 2;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #f1c40f; /* Um dourado para destacar */
+}
+
+/* Animação de tremor de tela */
+@keyframes screen-shake {
+  0% { transform: translate(1px, 1px); }
+  10% { transform: translate(-1px, -2px); }
+  20% { transform: translate(-2px, 0px); }
+  30% { transform: translate(2px, 2px); }
+  40% { transform: translate(1px, -1px); }
+  50% { transform: translate(-1px, 2px); }
+  60% { transform: translate(-2px, 1px); }
+  70% { transform: translate(2px, 1px); }
+  80% { transform: translate(-1px, -1px); }
+  100% { transform: translate(1px, -2px); }
+}
+
+.shake {
+  animation: screen-shake 0.3s;
+}
+
+/* Animação de pulso para o botão */
+@keyframes pulse-button {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+#loading-text {
+  position: relative; z-index: 2;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f1c40f;
+  font-size: 1rem;
+}
+
+/* --- Media Queries para Telas Pequenas --- */
+@media (max-width: 640px) {
+  #welcome-screen h1 {
+    font-size: 2rem;
+  }
+
+  #welcome-screen p {
+    font-size: 1rem;
+  }
+
+  #welcome-screen .instructions li {
+    font-size: 0.8rem;
+  }
+
+  #game-over h2 {
+    font-size: 2.5rem;
+  }
+}
