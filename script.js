@@ -21,7 +21,7 @@ const PLAYER_WIDTH = 50;
 const PLAYER_HEIGHT = 80;
 const PLAYER_SPEED = 5;
 const PLAYER_HITBOX_PADDING = 10; // Reduz a hitbox em 10px de cada lado
-const MAX_LIVES = 5;
+const MAX_LIVES = 3;
 const INITIAL_LIVES = 3;
 
 const ENEMY_WIDTH = 50;
@@ -187,8 +187,8 @@ function addScore(points) {
   gameState.score += points;
   scoreDisplay.textContent = `PONTOS: ${gameState.score}`;
 
-  // A cada 25 pontos (tijolos desviados), ganha uma vida, até o máximo de 5.
-  const lifeUpThreshold = 25;
+  // A cada 50 pontos (tijolos desviados), ganha uma vida, se não tiver o máximo.
+  const lifeUpThreshold = 50;
   if (Math.floor(oldScore / lifeUpThreshold) < Math.floor(gameState.score / lifeUpThreshold)) {
     if (gameState.lives < MAX_LIVES) {
       gameState.lives++;
@@ -476,12 +476,12 @@ function initializeGame() {
 
   document.addEventListener('keydown', (e) => {
     if (!gameState.gameRunning) return;
-    if (e.key === 'ArrowRight' || e.key === 'd') player.dx = player.speed;
-    else if (e.key === 'ArrowLeft' || e.key === 'a') player.dx = -player.speed;
+    if (e.code === 'ArrowRight' || e.code === 'KeyD') player.dx = player.speed;
+    else if (e.code === 'ArrowLeft' || e.code === 'KeyA') player.dx = -player.speed;
   });
 
   document.addEventListener('keyup', (e) => {
-    if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'ArrowLeft' || e.key === 'a') {
+    if (e.code === 'ArrowRight' || e.code === 'KeyD' || e.code === 'ArrowLeft' || e.code === 'KeyA') {
       player.dx = 0;
     }
   });

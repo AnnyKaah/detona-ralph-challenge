@@ -1,5 +1,7 @@
 # 🎮 Fuga do Ralph!
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-2ea44f?style=for-the-badge)](https://annykaah.github.io/detona-ralph-challenge/)
+
 ![Tela Inicial do Jogo](/assets/tela2-jogo-detona-ralph.png)
 
 ## 🚀 Sobre o Projeto
@@ -44,7 +46,7 @@ O projeto foi construído utilizando as tecnologias fundamentais do front-end:
 1.  **Mover**: Use as **setas direcionais (← →)** no teclado ou as **teclas A e D**. Em dispositivos móveis, toque na **metade esquerda ou direita** da tela.
 2.  **Objetivo**: Desvie dos tijolos para marcar pontos. Sua pontuação é o número de tijolos desviados.
 3.  **Power-up**: Passe por cima da **torta** para destruir todos os tijolos na tela e ganhar um bônus.
-4.  **Vidas**: Você começa com 3 vidas e ganha uma vida extra a cada 25 pontos, até um máximo de 5.
+4.  **Vidas**: Você começa com 3 vidas (o máximo). Você pode recuperar uma vida perdida a cada 50 pontos.
 
 ---
 
@@ -57,7 +59,7 @@ Não é necessária nenhuma instalação complexa. Basta seguir os passos abaixo
 git clone https://github.com/AnnyKaah/detona-ralph-challenge.git
 
 # 2. Navegue até a pasta do projeto
-cd seu-repositorio
+cd detona-ralph-challenge
 
 # 3. Abra o arquivo index.html no seu navegador
 #    (pode ser clicando duas vezes no arquivo)
